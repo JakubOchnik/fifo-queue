@@ -4,6 +4,8 @@
 const int len = 5;
 int tab[len] = { 7,6,5,4,3 };
 
+std::vector<int> vec = { 1,2,3,4,5 };
+
 int main() {
 	Queue x;
 	Queue y = { 6,5,4,3,2 };
@@ -21,5 +23,9 @@ int main() {
 	std::cout << y;
 	y[0] = 1;
 	std::cout << y;
+
+	Queue v(vec);
+	std::cout << v;
+	
 	return 0;
 }
