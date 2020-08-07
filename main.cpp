@@ -19,5 +19,7 @@ int main() {
 	std::cout << y;
 	y.pop();
 	std::cout << y;
+	y[0] = 1;
+	std::cout << y;
 	return 0;
 }
