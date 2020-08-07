@@ -1,7 +1,7 @@
 # Object-oriented FIFO queue
-A object-oriented implementation of a FIFO queue. The goal was to train object oriented programming in C++.
+An object-oriented implementation of a FIFO queue. The goal was to train object oriented programming in C++.
 ## Features
-* Multiple constructors (empty, initalizer list, array as an argument)
+* Multiple constructors (zero-argument, initalizer list, array)
 * Overloaded output stream << operator (printing out the whole queue)
 ```
 Queue x = {6,5,4,3}
