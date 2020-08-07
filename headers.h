@@ -3,6 +3,7 @@
 #include<iostream>
 #include <initializer_list>
 #include <string>
+#include <vector>
 
 class Queue {
 private:
@@ -17,6 +18,7 @@ public:
 	Queue();
 	Queue(std::initializer_list<int> list);
 	Queue(int tab[], int len);
+	Queue(std::vector<int> vec);
 	
 	void push(int num);
 	int pop();

@@ -1,44 +1,57 @@
 #include"headers.h"
 
 void Queue::init() {
-	this->n = 0;
 	this->first = new Node();
 	this->last = this->first;
 }
 
 Queue::Queue() {
 	init();
+	this->n = 0;
 }
 
-Queue::Queue(std::initializer_list<int> list){
+Queue::Queue(std::initializer_list<int> list): n(list.size()){
 	init();
 	Node* element = first;
-	int i = 0;
+	unsigned int i = 0;
 	for (int num : list) {
 		element->setVal(num);
-		if (i != list.size() - 1) {
+		if (i != n - 1) {
 			Node* newElement = element->setAndGetNext();
 			newElement->setPrev(element);
 			element = newElement;
 		}
 		i++;
 	}
-	this->n = list.size();
 	this->last = element;
 }
-Queue::Queue(int tab[], int len) {
+Queue::Queue(int tab[], int len): n(len) {
 	init();
 	Node* element = first;
-	int tabSize = len;
-	for (int i = 0; i < tabSize; i++) {
+	for (int i = 0; i < n; i++) {
 		element->setVal(tab[i]);
-		if (i != tabSize - 1) {
+		if (i != n - 1) {
 			Node* newElement = element->setAndGetNext();
 			newElement->setPrev(element);
 			element = newElement;
 		}
 	}
-	this->n = len;
+	this->last = element;
+}
+
+Queue::Queue(std::vector<int> vec): n(vec.size()) {
+	init();
+	Node* element = first;
+	unsigned int i = 0;
+	for (int num : vec) {
+		element->setVal(num);
+		if (i != n - 1) {
+			Node* newElement = element->setAndGetNext();
+			newElement->setPrev(element);
+			element = newElement;
+		}
+		i++;
+	}
 	this->last = element;
 }
 
@@ -99,7 +112,8 @@ std::ostream& operator<<(std::ostream& out, const Queue& q) {
 	Node* currentNode = q.first;
 	while (currentNode->getNext() != nullptr) {
 		output += std::to_string(currentNode->getVal());
-		output += ", ";
+		if(currentNode->getNext()!=nullptr)
+			output += ", ";
 		currentNode = currentNode->getNext();
 	}
 	if (q.size() != 0)
